@@ -3,6 +3,6 @@
  */
 
 import { TypedAction } from "redoodle";
-import { IRecipe } from "../state/recipesData";
+import { IRecipe } from "../../__generated__";
 
 export const AddRecipes = TypedAction.define("recipesData::add_recipes")<IRecipe[]>();
