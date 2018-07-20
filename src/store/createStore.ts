@@ -6,6 +6,7 @@ import { loggingMiddleware } from "redoodle";
 import { applyMiddleware, createStore, Store } from "redux";
 import { reducer } from "./reducers";
 import { IRecipesAppState } from "./state";
+import { initialInterfaceData } from "./state/interfaceData";
 import { initialRecipesDataState } from "./state/recipesData";
 
 export function createConfiguredStore(): Store<IRecipesAppState> {
@@ -13,5 +14,6 @@ export function createConfiguredStore(): Store<IRecipesAppState> {
 
     return createStoreWithMiddleware(reducer, {
         recipesData: initialRecipesDataState,
+        interfaceData: initialInterfaceData,
     });
 }
