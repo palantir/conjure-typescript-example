@@ -6,15 +6,17 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { RecipesApp } from "./recipesApp";
+import { createServices } from "./services";
 import { createConfiguredStore } from "./store";
 
 // Create the store
 const store = createConfiguredStore();
+const services = createServices();
 
 // Render the app
 ReactDOM.render(
     <Provider store={store}>
-        <RecipesApp />
+        <RecipesApp services={services} />
     </Provider>,
     document.getElementById("root"),
 );

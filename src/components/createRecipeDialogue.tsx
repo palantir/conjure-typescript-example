@@ -3,7 +3,7 @@
  */
 import { Classes, Dialog } from "@blueprintjs/core";
 import * as React from "react";
-import { IRecipe } from "../__generated__/conjure-examples";
+import { IRecipe } from "../__generated__";
 
 export interface ICreateRecipeDialogueStateProps {
     isDialogueOpen: boolean;
@@ -26,6 +26,9 @@ export class CreateRecipeDialogue extends React.PureComponent<ICreateRecipeDialo
     }
 
     private createNewRecipe = () => {
-        this.props.createNewRecipe({ name: "foo", steps: [] });
+        this.props.createNewRecipe({
+            name: "foo",
+            steps: [{ type: "mix", mix: ["foo", "bar"] }],
+        });
     };
 }

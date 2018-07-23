@@ -2,47 +2,43 @@
  * @license Copyright 2017 Palantir Technologies, Inc. All rights reserved.
  */
 
-import { H2 } from "@blueprintjs/core";
 import * as React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { IRecipe } from "./__generated__";
 import { CreateRecipeDialogue } from "./components/createRecipeDialogue";
 import { Header } from "./components/header";
+import { RecipeItem } from "./components/recipeItem";
+import { IServices } from "./services";
 import { IRecipesAppState } from "./store";
 import { AddRecipes } from "./store/actions";
 import { SetIsDialogueOpen } from "./store/actions/interfaceActions";
 
 export interface IRecipesAppStateProps {
-    recipes: IRecipe[];
     isDialogueOpen: boolean;
+    recipes: IRecipe[];
+    services: IServices;
 }
 
 export interface IRecipesAppDispatchProps {
-    createNewRecipe: (recipe: IRecipe) => void;
+    addRecipes: (recipe: IRecipe[]) => void;
     setIsDialogOpen: (isDialogOpen: boolean) => void;
 }
 
 export type IExampleAppProps = IRecipesAppStateProps & IRecipesAppDispatchProps;
 
 class UnconnectedRecipesApp extends React.PureComponent<IExampleAppProps> {
+    public componentDidMount(): void {
+        this.props.services.recipesService.getAllRecipes().then(recipes => this.props.addRecipes(recipes));
+    }
+
     public render() {
         const { recipes, isDialogueOpen } = this.props;
         return (
             <div className="foundry-example-app">
                 <CreateRecipeDialogue isDialogueOpen={isDialogueOpen} createNewRecipe={this.createNewRecipe} />
                 <Header createNewRecipe={this.openCreateRecipeDialogue} />
-                {recipes.map(({ name, steps }, index) => (
-                    <div key={index}>
-                        <H2>{name}</H2>
-                        {steps.map((step, i) => (
-                            <div key={i}>
-                                <div>{step.type}</div>
-                                <div>{JSON.stringify(step[step.type])}</div>
-                            </div>
-                        ))}
-                    </div>
-                ))}
+                {recipes.map((recipe, index) => <RecipeItem recipe={recipe} key={index} />)}
             </div>
         );
     }
@@ -52,18 +48,19 @@ class UnconnectedRecipesApp extends React.PureComponent<IExampleAppProps> {
     };
 
     private createNewRecipe = (recipe: IRecipe) => {
-        this.props.createNewRecipe(recipe);
+        this.props.addRecipes([recipe]);
         this.props.setIsDialogOpen(false);
     };
 }
 
 export const RecipesApp = connect(
-    (state: IRecipesAppState): IRecipesAppStateProps => ({
-        recipes: state.recipesData.recipes,
+    (state: IRecipesAppState, ownProps: { services: IServices }): IRecipesAppStateProps => ({
         isDialogueOpen: state.interfaceData.isDialogueOpen,
+        recipes: state.recipesData.recipes,
+        services: ownProps.services,
     }),
     (dispatch: Dispatch): IRecipesAppDispatchProps => ({
         setIsDialogOpen: isDialogueOpen => dispatch(SetIsDialogueOpen.create(isDialogueOpen)),
-        createNewRecipe: recipe => dispatch(AddRecipes.create([recipe])),
+        addRecipes: recipes => dispatch(AddRecipes.create(recipes)),
     }),
 )(UnconnectedRecipesApp);

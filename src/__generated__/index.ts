@@ -1,2 +1,1 @@
-export * from "./comnjure-examples-api";
-export * from "./conjure-examples";
+export * from "./conjure-examples-recipes-api";

@@ -1,8 +1,8 @@
 export interface IRecipeNotFound {
-    errorCode: "NOT_FOUND";
-    errorInstanceId: string;
-    errorName: "Recipe:RecipeNotFound";
-    parameters: {
+    'errorCode': "NOT_FOUND";
+    'errorInstanceId': string;
+    'errorName': "Recipe:RecipeNotFound";
+    'parameters': {
         name: string;
     };
 }

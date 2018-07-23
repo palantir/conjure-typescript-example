@@ -1,25 +1,25 @@
 import { IBakeStep } from "./bakeStep";
 
 export interface IRecipeStep_Mix {
-    mix: string[];
-    type: "mix";
+    'mix': Array<string>;
+    'type': "mix";
 }
 
 export interface IRecipeStep_Chop {
-    chop: string;
-    type: "chop";
+    'chop': string;
+    'type': "chop";
 }
 
 export interface IRecipeStep_Bake {
-    bake: IBakeStep;
-    type: "bake";
+    'bake': IBakeStep;
+    'type': "bake";
 }
 
 function isMix(obj: IRecipeStep): obj is IRecipeStep_Mix {
-    return obj.type === "mix";
+    return (obj.type === "mix");
 }
 
-function mix(obj: string[]): IRecipeStep_Mix {
+function mix(obj: Array<string>): IRecipeStep_Mix {
     return {
         mix: obj,
         type: "mix",
@@ -27,7 +27,7 @@ function mix(obj: string[]): IRecipeStep_Mix {
 }
 
 function isChop(obj: IRecipeStep): obj is IRecipeStep_Chop {
-    return obj.type === "chop";
+    return (obj.type === "chop");
 }
 
 function chop(obj: string): IRecipeStep_Chop {
@@ -38,7 +38,7 @@ function chop(obj: string): IRecipeStep_Chop {
 }
 
 function isBake(obj: IRecipeStep): obj is IRecipeStep_Bake {
-    return obj.type === "bake";
+    return (obj.type === "bake");
 }
 
 function bake(obj: IBakeStep): IRecipeStep_Bake {
@@ -51,10 +51,10 @@ function bake(obj: IBakeStep): IRecipeStep_Bake {
 export type IRecipeStep = IRecipeStep_Mix | IRecipeStep_Chop | IRecipeStep_Bake;
 
 export interface IRecipeStepVisitor<T> {
-    mix: (obj: string[]) => T;
-    chop: (obj: string) => T;
-    bake: (obj: IBakeStep) => T;
-    unknown: (obj: IRecipeStep) => T;
+    'mix': (obj: Array<string>) => T;
+    'chop': (obj: string) => T;
+    'bake': (obj: IBakeStep) => T;
+    'unknown': (obj: IRecipeStep) => T;
 }
 
 function visit<T>(obj: IRecipeStep, visitor: IRecipeStepVisitor<T>): T {
@@ -71,11 +71,11 @@ function visit<T>(obj: IRecipeStep, visitor: IRecipeStepVisitor<T>): T {
 }
 
 export const IRecipeStep = {
-    isMix,
-    mix,
-    isChop,
-    chop,
-    isBake,
-    bake,
-    visit,
+    isMix: isMix,
+    mix: mix,
+    isChop: isChop,
+    chop: chop,
+    isBake: isBake,
+    bake: bake,
+    visit: visit
 };
