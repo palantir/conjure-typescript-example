@@ -18,17 +18,29 @@ export class RecipeItem extends React.PureComponent<IRecipeItemProps> {
             <Card>
                 <H5>{name}</H5>
                 <div>steps:</div>
-                {steps.map(this.renderStep)}
+                <ol>{steps.map(this.renderStep)}</ol>
             </Card>
         );
     }
 
     private renderStep = (step: IRecipeStep, index: number) => {
+        let recipeContent: JSX.Element | JSX.Element[];
+        if (step.type === "mix") {
+            recipeContent = <ul>{step.mix.map((inner, i) => <li key={i}>{inner}</li>)}</ul>;
+        } else if (step.type === "chop") {
+            recipeContent = <span>{step.chop}</span>;
+        } else {
+            const {
+                temperature: { degree, unit },
+                durationInSeconds,
+            } = step.bake;
+            recipeContent = <div>{`${durationInSeconds} seconds at a temperature of ${degree} ${unit}`}</div>;
+        }
         return (
-            <div key={index}>
+            <li key={index}>
                 <div>{step.type}</div>
-                <div>{JSON.stringify(step[step.type])}</div>
-            </div>
+                <div>{recipeContent}</div>
+            </li>
         );
     };
 }
