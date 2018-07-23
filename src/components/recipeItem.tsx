@@ -2,6 +2,7 @@
  * @license Copyright 2018 Palantir Technologies, Inc. All rights reserved.
  */
 import { Card, H5 } from "@blueprintjs/core";
+import * as Moment from "moment";
 import * as React from "react";
 import { IRecipe, IRecipeStep } from "../__generated__";
 
@@ -34,7 +35,8 @@ export class RecipeItem extends React.PureComponent<IRecipeItemProps> {
                 temperature: { degree, unit },
                 durationInSeconds,
             } = step.bake;
-            recipeContent = <div>{`${durationInSeconds} seconds at a temperature of ${degree} ${unit}`}</div>;
+            const duration = Moment.duration(durationInSeconds, "seconds").humanize();
+            recipeContent = <div>{`${duration} at a temperature of ${degree}° ${unit}`}</div>;
         }
         return (
             <li key={index}>
