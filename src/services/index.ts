@@ -15,7 +15,7 @@ export function createServices(): IServices {
             productName: "RecipesApp",
             productVersion: "0.1.0",
         },
-        baseUrl: "http://localhost:8000/api",
+        baseUrl: "http://localhost:8000/examples/api",
     });
     return {
         recipesService: new RecipeBookService(bridge),
