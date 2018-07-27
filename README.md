@@ -18,22 +18,19 @@ This example project uses the following tools and libraries, please consult thei
 
     This is what the project looks like:
     ```
-    ├── package.json
-    ├── src/
-    │   ├── components/
-    │   ├── recipesApp.tsx
-    │   ├── services/
-    │   │   └── index.ts
-    │   └── store/
-    │       ├── actions/
-    │       ├── createStore.ts
-    │       ├── index.ts
-    │       ├── reducers/
-    │       ├── state/
-    │       └── state.ts
-    └── yarn.lock
+    └── src/
+        ├── components/
+        ├── recipesApp.tsx
+        ├── services/
+        │   └── index.ts
+        └── store/
+            ├── actions/
+            ├── createStore.ts
+            ├── index.ts
+            ├── reducers/
+            ├── state/
+            └── state.ts
     ```
-    * package.json - configures the yarn project with the necessary dependencies and build scripts
     * src/recipesApp.tsx - the main component of this app
     * src/components - defines react components
     * src/services - uses [conjure-typescript-client] and the generated [conjure-recipe-example-api] to define a remote `RecipeBookService`
