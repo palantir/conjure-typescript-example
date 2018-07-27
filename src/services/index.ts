@@ -2,7 +2,7 @@
  * @license Copyright 2018 Palantir Technologies, Inc. All rights reserved.
  */
 import { DefaultHttpApiBridge } from "conjure-client";
-import { RecipeBookService } from "../__generated__";
+import { RecipeBookService } from "conjure-recipe-example-api";
 
 export interface IServices {
     recipesService: RecipeBookService;

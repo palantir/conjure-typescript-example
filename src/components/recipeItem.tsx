@@ -2,9 +2,9 @@
  * @license Copyright 2018 Palantir Technologies, Inc. All rights reserved.
  */
 import { Card, H5 } from "@blueprintjs/core";
+import { IRecipe, IRecipeStep } from "conjure-recipe-example-api";
 import * as Moment from "moment";
 import * as React from "react";
-import { IRecipe, IRecipeStep } from "../__generated__";
 
 export interface IRecipeItemProps {
     recipe: IRecipe;

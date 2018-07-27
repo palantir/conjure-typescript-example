@@ -2,8 +2,5 @@
   "extends": [ "@blueprintjs/tslint-config"],
   "rules": {
     "object-literal-sort-keys": false
-  },
-  "linterOptions": {
-    "exclude": ["**/__generated__/**/*.ts"]
   }
 }

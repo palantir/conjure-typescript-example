@@ -1,5 +1,5 @@
 {
-  "name": "my-app-foo",
+  "name": "conjure-receipe-example-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,6 +13,7 @@
   "dependencies": {
     "@blueprintjs/core": "^3.0.1",
     "conjure-client": "^1.2.0",
+    "conjure-recipe-example-api": "^0.2.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
