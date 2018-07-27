@@ -10,7 +10,7 @@ import { initialInterfaceData } from "./state/interfaceData";
 import { initialRecipesDataState } from "./state/recipesData";
 
 export function createConfiguredStore(): Store<IRecipesAppState> {
-    const createStoreWithMiddleware: any = applyMiddleware(loggingMiddleware())(createStore);
+    const createStoreWithMiddleware = applyMiddleware(loggingMiddleware())(createStore);
 
     return createStoreWithMiddleware(reducer, {
         recipesData: initialRecipesDataState,
