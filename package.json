@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "start": "react-scripts-ts start",
-    "build": "react-scripts-ts build",
+    "build": "yarn lint && react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject",
+    "circle-publish": "echo 'Add publishing logic here...'",
     "lint": "tslint 'src/**/*.ts*' --project tsconfig.json"
   },
   "dependencies": {
