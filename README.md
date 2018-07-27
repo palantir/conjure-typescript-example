@@ -38,7 +38,23 @@ This example project uses the following tools and libraries, please consult thei
         * src/store/actions - defines actions that are exported to the react app
         * src/store/reducers - defines reducers that implement the behaviour of the actions on the state 
         * src/store/state - defines the state type hierarchy
-    * yarn.lock - lock file for the dependency versions chosen by yarn upon the last `yarn install` invocation
+
+#### How to depend on a conjure API
+
+[gradle-conjure] publishes conjure APIs to NPM (via the `publishTypeScript` task), so you can depend on the API 
+like any other package.
+
+Make sure to also add a dependency on [conjure-client][conjure-typescript-client] in your `package.json`:
+
+```diff
+   "dependencies": {
+     "@blueprintjs/core": "^3.0.1",
++    "conjure-client": "^1.2.0",
++    "conjure-recipe-example-api": "^0.2.0",
+     "react": "^16.4.1",
+     "react-dom": "^16.4.1",
+     "react-redux": "^5.0.7",
+```
     
 ## Development
 
@@ -59,7 +75,7 @@ Please follow [this section](https://github.com/palantir/conjure-java-example#ge
 [conjure-recipe-example-api]: https://www.npmjs.com/package/conjure-recipe-example-api
 [conjure-java-example]: https://github.com/palantir/conjure-java-example
 [recipe-example-api]: https://github.com/palantir/conjure-java-example/blob/develop/recipe-example-api/src/main/conjure/recipe-example-api.yml
-
+[gradle-conjure]: https://github.com/palantir/gradle-conjure
 
 
 
