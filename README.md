@@ -19,38 +19,18 @@ This example project uses the following tools and libraries, please consult thei
     This is what the project looks like:
     ```
     ├── package.json
-    ├── public
-    │   ├── index.html
-    │   └── manifest.json
-    ├── src
-    │   ├── components
-    │   │   ├── createRecipeDialogue.tsx
-    │   │   ├── header.tsx
-    │   │   └── recipeItem.tsx
-    │   ├── index.css
-    │   ├── index.tsx
+    ├── src/
+    │   ├── components/
     │   ├── recipesApp.tsx
-    │   ├── services
+    │   ├── services/
     │   │   └── index.ts
-    │   └── store
-    │       ├── actions
-    │       │   ├── index.ts
-    │       │   ├── interfaceActions.ts
-    │       │   └── recipesActions.ts
+    │   └── store/
+    │       ├── actions/
     │       ├── createStore.ts
     │       ├── index.ts
-    │       ├── reducers
-    │       │   ├── index.ts
-    │       │   ├── interfaceReducer.ts
-    │       │   └── recipesReducer.ts
-    │       ├── state
-    │       │   ├── interfaceData.ts
-    │       │   └── recipesData.ts
+    │       ├── reducers/
+    │       ├── state/
     │       └── state.ts
-    ├── tsconfig.json
-    ├── tsconfig.prod.json
-    ├── tsconfig.test.json
-    ├── tslint.json
     └── yarn.lock
     ```
     * package.json - configures the yarn project with the necessary dependencies and build scripts
@@ -61,10 +41,7 @@ This example project uses the following tools and libraries, please consult thei
         * src/store/actions - defines actions that are exported to the react app
         * src/store/reducers - defines reducers that implement the behaviour of the actions on the state 
         * src/store/state - defines the state type hierarchy
-    * tsconfig.json - configures the typescript compiler
     * yarn.lock - lock file for the dependency versions chosen by yarn upon the last `yarn install` invocation
-    * public/index.html - static entry point defining required CSS files
-    * public/manifest.json - metadata necessary for adding the app to the Android home screen
     
 ## Development
 
