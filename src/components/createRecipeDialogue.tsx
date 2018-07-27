@@ -2,8 +2,8 @@
  * @license Copyright 2018 Palantir Technologies, Inc. All rights reserved.
  */
 import { Classes, Dialog } from "@blueprintjs/core";
+import { IRecipe } from "conjure-recipe-example-api";
 import * as React from "react";
-import { IRecipe } from "../__generated__";
 
 export interface ICreateRecipeDialogueStateProps {
     isDialogueOpen: boolean;

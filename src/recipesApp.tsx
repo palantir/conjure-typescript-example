@@ -2,10 +2,10 @@
  * @license Copyright 2017 Palantir Technologies, Inc. All rights reserved.
  */
 
+import { IRecipe } from "conjure-recipe-example-api";
 import * as React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { IRecipe } from "./__generated__";
 import { CreateRecipeDialogue } from "./components/createRecipeDialogue";
 import { Header } from "./components/header";
 import { RecipeItem } from "./components/recipeItem";
