@@ -14,12 +14,12 @@
     "@blueprintjs/core": "^3.0.1",
     "conjure-client": "^1.2.0",
     "conjure-recipe-example-api": "^0.2.0",
+    "moment": "^2.22.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
     "react-scripts-ts": "2.16.0",
     "redoodle": "^2.3.2",
-    "moment": "^2.22.2",
     "redux": "^4.0.0"
   },
   "devDependencies": {
@@ -29,7 +29,7 @@
     "@types/react": "^16.4.6",
     "@types/react-dom": "^16.0.6",
     "@types/react-redux": "^5.0.19",
-    "typescript": "^2.9.2",
-    "tslint": "^5.11.0"
+    "tslint": "^5.11.0",
+    "typescript": "^2.9.2"
   }
 }
