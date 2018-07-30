@@ -6,7 +6,7 @@ import { IRecipe } from "conjure-recipe-example-api";
 import * as React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { CreateRecipeDialogue } from "./components/createRecipeDialogue";
+import { CreateRecipeDialog } from "./components/createRecipeDialog";
 import { Header } from "./components/header";
 import { RecipeItem } from "./components/recipeItem";
 import { IServices } from "./services";
@@ -36,15 +36,23 @@ class UnconnectedRecipesApp extends React.PureComponent<IExampleAppProps> {
         const { recipes, isDialogueOpen } = this.props;
         return (
             <div className="foundry-example-app">
-                <CreateRecipeDialogue isDialogueOpen={isDialogueOpen} createNewRecipe={this.createNewRecipe} />
-                <Header createNewRecipe={this.openCreateRecipeDialogue} />
+                <CreateRecipeDialog
+                    isDialogOpen={isDialogueOpen}
+                    closeDialog={this.closeRecipeDialog}
+                    createNewRecipe={this.createNewRecipe}
+                />
+                <Header createNewRecipe={this.openCreateRecipeDialog} />
                 {recipes.map((recipe, index) => <RecipeItem recipe={recipe} key={index} />)}
             </div>
         );
     }
 
-    private openCreateRecipeDialogue = () => {
+    private openCreateRecipeDialog = () => {
         this.props.setIsDialogOpen(true);
+    };
+
+    private closeRecipeDialog = () => {
+        this.props.setIsDialogOpen(false);
     };
 
     private createNewRecipe = (recipe: IRecipe) => {

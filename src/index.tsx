@@ -9,6 +9,8 @@ import { RecipesApp } from "./recipesApp";
 import { createServices } from "./services";
 import { createConfiguredStore } from "./store";
 
+import "./index.css";
+
 // Create the store
 const store = createConfiguredStore();
 const services = createServices();
