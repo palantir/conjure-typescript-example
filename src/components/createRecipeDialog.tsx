@@ -56,7 +56,10 @@ export class CreateRecipeDialog extends React.PureComponent<ICreateRecipeDialogP
                 isCloseButtonShown={false}
             >
                 <div className={"rp-create-dialog-body " + Classes.DIALOG_BODY}>
-                    <input type="text" onChange={this.handleNameChange} value={name} placeholder="Recipe name" />
+                    <div className={Classes.CARD}>
+                        <div className={Classes.TEXT_MUTED}>Create a new delicious recipe</div>
+                        <input type="text" onChange={this.handleNameChange} value={name} placeholder="Recipe name" />
+                    </div>
                     {steps.map(this.renderStep)}
                     <div className="add-more-steps" onClick={this.addStep}>
                         <div className="accent-line" />
@@ -71,7 +74,9 @@ export class CreateRecipeDialog extends React.PureComponent<ICreateRecipeDialogP
                         <Button intent={Intent.DANGER} onClick={closeDialog}>
                             Close
                         </Button>
-                        <Button intent={Intent.SUCCESS}>Create Recipe</Button>
+                        <Button intent={Intent.SUCCESS} onClick={this.createNewRecipe}>
+                            Create Recipe
+                        </Button>
                     </div>
                 </div>
             </Dialog>
@@ -88,7 +93,7 @@ export class CreateRecipeDialog extends React.PureComponent<ICreateRecipeDialogP
             stepBody = this.renderBakeStep(step.bake, index);
         }
         return (
-            <div className="recipe-step bp3-card" key={index}>
+            <div className={Classes.CARD} key={index}>
                 <div className="step-header">
                     <RadioGroup onChange={this.handleStepChange(index)} inline={true} selectedValue={step.type}>
                         <Radio label="Mix" value="mix" />
@@ -156,4 +161,9 @@ export class CreateRecipeDialog extends React.PureComponent<ICreateRecipeDialogP
             });
         };
     }
+
+    private createNewRecipe = () => {
+        this.props.createNewRecipe(this.state);
+        this.setState({ name: "", steps: [] });
+    };
 }

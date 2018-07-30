@@ -5,10 +5,11 @@
     overflow-y: scroll;
 }
 
-.recipe-step {
+.rp-create-dialog-body .bp3-card {
+    display: flex;
+    flex-direction: column;
     margin: 5px;
     padding: 5px;
-    background: white;
 }
 
 .step-header {
