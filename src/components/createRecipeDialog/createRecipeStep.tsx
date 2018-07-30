@@ -2,7 +2,7 @@
  * @license Copyright 2018 Palantir Technologies, Inc. All rights reserved.
  */
 
-import { Button, Classes, H6, NonIdealState, NumericInput, Radio, RadioGroup } from "@blueprintjs/core";
+import { Button, Card, Classes, H6, NonIdealState, NumericInput, Radio, RadioGroup } from "@blueprintjs/core";
 import { TimePicker, TimePrecision } from "@blueprintjs/datetime";
 import { IRecipeStep, IRecipeStep_Bake, IRecipeStep_Chop, IRecipeStep_Mix } from "conjure-recipe-example-api";
 import * as React from "react";
@@ -20,7 +20,7 @@ export class CreateRecipeStep extends React.PureComponent<ICreateRecipeStepProps
     public render() {
         const { step, removeStep } = this.props;
         return (
-            <div className={Classes.CARD}>
+            <Card>
                 <div className="rp-step-header">
                     <RadioGroup onChange={this.handleStepChange} inline={true} selectedValue={step.type}>
                         <Radio label="Mix" value="mix" />
@@ -31,7 +31,7 @@ export class CreateRecipeStep extends React.PureComponent<ICreateRecipeStepProps
                     <Button className={Classes.MINIMAL} icon="cross" onClick={removeStep} />
                 </div>
                 {this.renderStepBody()}
-            </div>
+            </Card>
         );
     }
 

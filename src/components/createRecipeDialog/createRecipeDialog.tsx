@@ -4,7 +4,8 @@
 
 import "./createRecipeDialog.css";
 
-import { Button, Classes, Dialog, H6, Intent } from "@blueprintjs/core";
+import { Button, Card, Classes, Dialog, H6, Intent } from "@blueprintjs/core";
+import * as classNames from "classnames";
 import { IRecipe, IRecipeStep } from "conjure-recipe-example-api";
 import * as React from "react";
 import { AddElementIndicator } from "../addElementIndicator";
@@ -42,10 +43,9 @@ export class CreateRecipeDialog extends React.PureComponent<ICreateRecipeDialogP
                 title="Create new recipe"
                 onClose={closeDialog}
                 isOpen={isDialogOpen}
-                isCloseButtonShown={false}
             >
-                <div className={"rp-create-dialog-body " + Classes.DIALOG_BODY}>
-                    <div className={Classes.CARD}>
+                <div className={classNames("rp-create-dialog-body", Classes.DIALOG_BODY)}>
+                    <Card>
                         <H6>Create a new delicious recipe</H6>
                         <input
                             className={Classes.INPUT}
@@ -54,7 +54,7 @@ export class CreateRecipeDialog extends React.PureComponent<ICreateRecipeDialogP
                             value={name}
                             placeholder="Recipe name"
                         />
-                    </div>
+                    </Card>
                     <div className="rp-create-dialog-steps">
                         {steps.map((step, index) => (
                             <CreateRecipeStep
@@ -70,9 +70,6 @@ export class CreateRecipeDialog extends React.PureComponent<ICreateRecipeDialogP
                 </div>
                 <div className={Classes.DIALOG_FOOTER}>
                     <div className={Classes.DIALOG_FOOTER_ACTIONS}>
-                        <Button intent={Intent.DANGER} onClick={closeDialog}>
-                            Close
-                        </Button>
                         <Button intent={Intent.SUCCESS} onClick={this.createNewRecipe}>
                             Create Recipe
                         </Button>
