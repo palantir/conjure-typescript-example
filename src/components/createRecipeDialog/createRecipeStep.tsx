@@ -4,7 +4,13 @@
 
 import { Button, Card, Classes, H6, NonIdealState, NumericInput, Radio, RadioGroup } from "@blueprintjs/core";
 import { TimePicker, TimePrecision } from "@blueprintjs/datetime";
-import { IRecipeStep, IRecipeStep_Bake, IRecipeStep_Chop, IRecipeStep_Mix } from "conjure-recipe-example-api";
+import {
+    IRecipeStep,
+    IRecipeStep_Bake,
+    IRecipeStep_Chop,
+    IRecipeStep_Mix,
+    TemperatureUnit,
+} from "conjure-recipe-example-api";
 import * as React from "react";
 import { AddElementIndicator } from "../addElementIndicator";
 import { dateToSeconds, secondsToDate, updateListElem } from "./utils";
@@ -106,8 +112,8 @@ export class CreateRecipeStep extends React.PureComponent<ICreateRecipeStepProps
                         value={degree}
                     />
                     <RadioGroup inline={true} selectedValue={unit} onChange={this.handleBakeUnitChange}>
-                        <Radio label="Fahrenheit" value="Fahrenheit" />
-                        <Radio label="Celcius" value="Celcius" />
+                        <Radio label="Fahrenheit" value={TemperatureUnit.FAHRENHEIT} />
+                        <Radio label="Celcius" value={TemperatureUnit.CELCIUS} />
                     </RadioGroup>
                 </div>
                 <H6>Duration</H6>
@@ -155,7 +161,7 @@ export class CreateRecipeStep extends React.PureComponent<ICreateRecipeStepProps
 
     private handleBakeUnitChange = (event: React.FormEvent<HTMLInputElement>) => {
         const step = this.props.step as IRecipeStep_Bake;
-        const unit = (event.target as HTMLInputElement).value;
+        const unit = (event.target as HTMLInputElement).value as TemperatureUnit;
         this.props.updateStep({
             ...step,
             bake: {

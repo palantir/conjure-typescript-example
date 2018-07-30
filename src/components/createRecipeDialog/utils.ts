@@ -2,7 +2,7 @@
  * @license Copyright 2018 Palantir Technologies, Inc. All rights reserved.
  */
 
-import { IRecipeStep } from "conjure-recipe-example-api";
+import { IRecipeStep, TemperatureUnit } from "conjure-recipe-example-api";
 import * as moment from "moment";
 
 export function updateListElem<T>(updatedElem: T, list: T[], index: number) {
@@ -15,7 +15,10 @@ export function createDefaultRecipeStep(type: string): IRecipeStep {
     } else if (type === "chop") {
         return { type: "chop", chop: "" };
     } else {
-        return { type: "bake", bake: { temperature: { degree: 350, unit: "Farenheit" }, durationInSeconds: 600 } };
+        return {
+            type: "bake",
+            bake: { temperature: { degree: 350, unit: TemperatureUnit.FAHRENHEIT }, durationInSeconds: 600 },
+        };
     }
 }
 
