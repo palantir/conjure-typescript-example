@@ -2,7 +2,7 @@
  * @license Copyright 2018 Palantir Technologies, Inc. All rights reserved.
  */
 
-import { Button, Classes, H6, NumericInput, Radio, RadioGroup } from "@blueprintjs/core";
+import { Button, Classes, H6, NonIdealState, NumericInput, Radio, RadioGroup } from "@blueprintjs/core";
 import { TimePicker, TimePrecision } from "@blueprintjs/datetime";
 import { IRecipeStep, IRecipeStep_Bake, IRecipeStep_Chop, IRecipeStep_Mix } from "conjure-recipe-example-api";
 import * as React from "react";
@@ -19,14 +19,6 @@ interface ICreateRecipeStepProps {
 export class CreateRecipeStep extends React.PureComponent<ICreateRecipeStepProps> {
     public render() {
         const { step, removeStep } = this.props;
-        let stepBody: JSX.Element | JSX.Element[];
-        if (step.type === "mix") {
-            stepBody = this.renderMixStep(step);
-        } else if (step.type === "chop") {
-            stepBody = this.renderChopStep(step);
-        } else {
-            stepBody = this.renderBakeStep(step);
-        }
         return (
             <div className={Classes.CARD}>
                 <div className="rp-step-header">
@@ -38,9 +30,23 @@ export class CreateRecipeStep extends React.PureComponent<ICreateRecipeStepProps
                     <div className={Classes.TEXT_LARGE}>{}</div>
                     <Button className={Classes.MINIMAL} icon="cross" onClick={removeStep} />
                 </div>
-                {stepBody}
+                {this.renderStepBody()}
             </div>
         );
+    }
+
+    private renderStepBody() {
+        const { step } = this.props;
+        switch (step.type) {
+            case "mix":
+                return this.renderMixStep(step);
+            case "chop":
+                return this.renderChopStep(step);
+            case "bake":
+                return this.renderBakeStep(step);
+            default:
+                return <NonIdealState description="Unhandled step type" />;
+        }
     }
 
     private renderMixStep({ mix }: IRecipeStep_Mix) {
