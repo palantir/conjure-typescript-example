@@ -2,7 +2,7 @@
  * @license Copyright 2018 Palantir Technologies, Inc. All rights reserved.
  */
 import { Card, H5 } from "@blueprintjs/core";
-import { IRecipe, IRecipeStep } from "conjure-recipe-example-api";
+import { IRecipe, IRecipeStep, TemperatureUnit } from "conjure-recipe-example-api";
 import * as Moment from "moment";
 import * as React from "react";
 
@@ -35,8 +35,9 @@ export class RecipeItem extends React.PureComponent<IRecipeItemProps> {
                 temperature: { degree, unit },
                 durationInSeconds,
             } = step.bake;
+            const unitText = unit === TemperatureUnit.CELCIUS ? "C" : "F";
             const duration = Moment.duration(durationInSeconds, "seconds").humanize();
-            recipeContent = <div>{`${duration} at a temperature of ${degree}° ${unit}`}</div>;
+            recipeContent = <div>{`${duration} at a temperature of ${degree}° ${unitText}`}</div>;
         }
         return (
             <li key={index}>
