@@ -80,4 +80,4 @@ Please follow [this section](https://github.com/palantir/conjure-java-example#ge
 
 ## Create React App guide
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). Please refer to this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md) for how to create a react app.
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). Please refer to this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md) for how to perform common tasks.
