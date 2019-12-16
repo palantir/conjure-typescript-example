@@ -1,3 +1,7 @@
+<p align="right">
+<a href="https://autorelease.general.dmz.palantir.tech/palantir/conjure-typescript-example"><img src="https://img.shields.io/badge/Perform%20an-Autorelease-success.svg" alt="Autorelease"></a>
+</p>
+
 # conjure-typescript-example
 A small recipe frontend application that demonstrates the simple usage of conjure tooling.
 
