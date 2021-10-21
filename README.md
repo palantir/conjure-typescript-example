@@ -7,7 +7,7 @@ A small recipe frontend application that demonstrates the simple usage of conjur
 
 This example project uses the following tools and libraries, please consult their respective documentation for more information.
 
-* [conjure-typescript-client] - conjure client bindings for typescript
+* [conjure-typescript-runtime] - conjure client bindings for typescript
 * [conjure-recipe-example-api] - Generated Typescript API for the RecipeBookService
    * Generated and published by [conjure-java-example] from [this conjure API][recipe-example-api]
 * [yarn](https://yarnpkg.com/en/) - a flexible build tool for frontend development
@@ -33,7 +33,7 @@ This example project uses the following tools and libraries, please consult thei
     ```
     * src/recipesApp.tsx - the main component of this app
     * src/components - defines react components
-    * src/services - uses [conjure-typescript-client] and the generated [conjure-recipe-example-api] to define a remote `RecipeBookService`
+    * src/services - uses [conjure-typescript-runtime] and the generated [conjure-recipe-example-api] to define a remote `RecipeBookService`
     * src/store - defines the redux store for this app
         * src/store/actions - defines actions that are exported to the react app
         * src/store/reducers - defines reducers that implement the behaviour of the actions on the state 
@@ -44,7 +44,7 @@ This example project uses the following tools and libraries, please consult thei
 [gradle-conjure] publishes conjure APIs to NPM (via the `publishTypeScript` task), so you can depend on the API 
 like any other package.
 
-Make sure to also add a dependency on [conjure-client][conjure-typescript-client] in your `package.json`:
+Make sure to also add a dependency on [conjure-client][conjure-typescript-runtime] in your `package.json`:
 
 ```diff
    "dependencies": {
@@ -71,7 +71,7 @@ Please follow [this section](https://github.com/palantir/conjure-java-example#ge
 
 
 
-[conjure-typescript-client]: https://github.com/palantir/conjure-typescript-client/
+[conjure-typescript-runtime]: https://github.com/palantir/conjure-typescript-runtime/
 [conjure-recipe-example-api]: https://www.npmjs.com/package/conjure-recipe-example-api
 [conjure-java-example]: https://github.com/palantir/conjure-java-example
 [recipe-example-api]: https://github.com/palantir/conjure-java-example/blob/develop/recipe-example-api/src/main/conjure/recipe-example-api.yml
